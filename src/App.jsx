@@ -17,8 +17,8 @@ function App() {
         <Navbar />
         <main className="flex-grow container mx-auto px-4 py-6">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/tasks" element={<TaskManager />} />
+            <Route path="/" element={<TaskManager />} />
+            <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </main>
