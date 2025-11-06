@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/NavBar";
 import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
-import TaskManager from "./components/TaskManager";
+import Tasks from "./pages/Tasks";
+// import TaskManager from "./components/TaskManager";
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
         <Navbar />
         <main className="flex-grow container mx-auto px-4 py-6">
           <Routes>
-            <Route path="/" element={<TaskManager />} />
-            <Route path="/Dashboard" element={<Dashboard />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/tasks" element={<Tasks />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </main>

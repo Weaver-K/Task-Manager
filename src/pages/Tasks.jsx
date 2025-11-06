@@ -1,12 +1,10 @@
-import PageTransition from "@/components/PageTransition";
+import TaskManager from "../components/TaskManager";
 
 export default function Tasks() {
   return (
-    <PageTransition>
-      <div className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Your Tasks</h2>
-        <p className="text-muted-foreground">Manage your daily tasks easily.</p>
-      </div>
-    </PageTransition>
+    <div className="max-w-4xl mx-auto py-8 px-4">
+      <h1 className="text-3xl font-bold mb-6 text-center">All Tasks</h1>
+      <TaskManager />
+    </div>
   );
 }
