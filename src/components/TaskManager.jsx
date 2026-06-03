@@ -11,13 +11,26 @@ const useLocalStorageTasks = () => {
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem('tasks');
     return savedTasks ? JSON.parse(savedTasks) : [];
+  } catch (error) {"Failed parsing tasks from local storage", error};
+  return [];
+  }
   });
 
-  // Update localStorage when tasks change
-  useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
 
+// Defensive Update: Guard against writing empty values accidentally on boot
+  useEffect(() => {
+    // Only save if we actually have tasks, OR if the storage was explicitly cleared
+    const rawDiskData = localStorage.getItem('tasks');
+    const diskTasks = rawDiskData ? JSON.parse(rawDiskData) : [];
+    
+    // If the state is empty but the disk still has tasks, prioritize the disk!
+    if (tasks.length === 0 && diskTasks.length > 0) {
+      setTasks(diskTasks);
+    } else {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  }, [tasks]);
+  
   // Add a new task
   const addTask = (text) => {
     if (text.trim()) {
