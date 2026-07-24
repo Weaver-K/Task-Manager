@@ -11,7 +11,7 @@ const useLocalStorageTasks = () => {
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem('tasks');
     return savedTasks ? JSON.parse(savedTasks) : [];
-  } catch (error) {"Failed parsing tasks from local storage", error};
+  }catch (error) {"Failed parsing tasks from local storage", error};
   return [];
   }
   });
