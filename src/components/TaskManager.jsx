@@ -9,15 +9,16 @@ import {Button} from './ui/button';
 const useLocalStorageTasks = () => {
   // Initialize state from localStorage or with empty array
   const [tasks, setTasks] = useState(() => {
-    const savedTasks = localStorage.getItem('tasks');
-    return savedTasks ? JSON.parse(savedTasks) : [];
-  }catch (error) {"Failed parsing tasks from local storage", error};
-  return [];
-  }
+    try {
+      const savedTasks = localStorage.getItem('tasks');
+      return savedTasks ? JSON.parse(savedTasks) : [];
+    } catch (error) {
+      console.error("Failed parsing tasks from local storage", error);
+      return [];
+    }
   });
 
-
-// Defensive Update: Guard against writing empty values accidentally on boot
+  // Defensive Update: Guard against writing empty values accidentally on boot
   useEffect(() => {
     // Only save if we actually have tasks, OR if the storage was explicitly cleared
     const rawDiskData = localStorage.getItem('tasks');
@@ -180,4 +181,4 @@ const TaskManager = () => {
   );
 };
 
-export default TaskManager; 
+export default TaskManager;
