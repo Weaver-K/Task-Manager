@@ -18,9 +18,9 @@ function App() {
         <Navbar />
         <main className="flex-grow container mx-auto px-4 py-6">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/tasks" element={<Tasks />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/Dashboard" element={<Dashboard />} />
+            <Route path="/Tasks" element={<Tasks />} />
+            <Route path="/About" element={<About />} />
           </Routes>
         </main>
       </motion.div>
