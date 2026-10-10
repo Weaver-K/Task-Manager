@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/NavBar";
+import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
 import Tasks from "./pages/Tasks";
@@ -18,7 +19,7 @@ function App() {
         <Navbar />
         <main className="flex-grow container mx-auto px-4 py-6">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/about" element={<About />} />
