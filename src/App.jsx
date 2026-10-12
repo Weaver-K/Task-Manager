@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Route, Routes } from "react-router";
+import { Route, Router, Routes } from "react-router";
+import { createBrowserHistory } from "history";
 import Navbar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
@@ -7,9 +8,11 @@ import About from "./pages/About";
 import Tasks from "./pages/Tasks";
 // import TaskManager from "./components/TaskManager";
 
+const history = createBrowserHistory();
+
 function App() {
   return (
-    <Router>
+    <Router location={history.location} navigator={history}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -1,8 +1,26 @@
-import { Link, NavLink } from "react-router-dom";
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem } from "@/components/ui/navigation-menu";
+import { Link, useLocation } from "react-router";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+} from "@/components/ui/navigation-menu";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import ThemeToggle from "./ThemeToggle";
+
+function NavItem({ to, label }) {
+  const location = useLocation();
+  const isActive =
+    to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
+
+  return (
+    <NavigationMenuItem>
+      <Link to={to}>
+        <Button variant={isActive ? "default" : "ghost"}>{label}</Button>
+      </Link>
+    </NavigationMenuItem>
+  );
+}
 
 export default function Navbar() {
   return (
@@ -16,29 +34,9 @@ export default function Navbar() {
         {/* Navigation Menu */}
         <NavigationMenu>
           <NavigationMenuList className="flex space-x-2">
-            <NavigationMenuItem>
-              <NavLink to="/" end>
-                {({ isActive }) => (
-                  <Button variant={isActive ? "default" : "ghost"}>Dashboard</Button>
-                )}
-              </NavLink>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavLink to="/tasks">
-                {({ isActive }) => (
-                  <Button variant={isActive ? "default" : "ghost"}>Tasks</Button>
-                )}
-              </NavLink>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavLink to="/about">
-                {({ isActive }) => (
-                  <Button variant={isActive ? "default" : "ghost"}>About</Button>
-                )}
-              </NavLink>
-            </NavigationMenuItem>
+            <NavItem to="/" label="Dashboard" />
+            <NavItem to="/tasks" label="Tasks" />
+            <NavItem to="/about" label="About" />
           </NavigationMenuList>
         </NavigationMenu>
       </div>
