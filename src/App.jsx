@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Route } from "react-router-dom";
+import { Route, Routes } from "react-router";
 import Navbar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
